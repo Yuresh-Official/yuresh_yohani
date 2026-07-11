@@ -3,62 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For My Yohani ❤️</title>
+    <title>Yohani & Yuresh ❤️</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap');
+
         :root {
             --bg-color: #0f172a;
-            --card-bg: #1e293b;
+            --card-bg: rgba(30, 41, 59, 0.7);
             --text-color: #f8fafc;
-            --heart-color: #f43f5e;
+            --accent-color: #f43f5e;
         }
 
         body {
             background-color: var(--bg-color);
             color: var(--text-color);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Poppins', sans-serif;
             margin: 0;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             overflow: hidden;
+            background: radial-gradient(circle, #1e1b4b 0%, #0f172a 100%);
         }
 
         .container {
             background: var(--card-bg);
             padding: 40px;
             border-radius: 30px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-            text-align: center;
-            z-index: 2;
+            backdrop-filter: blur(15px);
             border: 1px solid rgba(255,255,255,0.1);
-            width: 85%;
-            max-width: 400px;
+            text-align: center;
+            animation: fadeIn 2s ease-in;
+            width: 90%;
+            max-width: 500px;
         }
 
-        h1 { font-size: 2rem; margin-bottom: 10px; background: linear-gradient(to right, #f43f5e, #fb7185); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-        .timer { font-size: 1.2rem; font-weight: bold; margin: 25px 0; padding: 20px; background: rgba(0,0,0,0.2); border-radius: 15px; line-height: 1.6; }
+        h1 { font-size: 2.5rem; margin: 0; color: #fff; }
+        .names { color: var(--accent-color); font-weight: 600; }
 
-        .heart-icon { font-size: 50px; animation: heartbeat 1.5s infinite; }
+        .timer-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-top: 30px; }
+        .time-box { background: rgba(0,0,0,0.3); padding: 10px; border-radius: 10px; }
+        .time-val { font-size: 1.5rem; font-weight: bold; display: block; }
+        .time-label { font-size: 0.7rem; text-transform: uppercase; opacity: 0.7; }
 
-        @keyframes heartbeat {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.2); }
-            100% { transform: scale(1); }
-        }
-
-        .heart { position: absolute; top: -10px; color: var(--heart-color); font-size: 20px; animation: fall linear infinite; z-index: 1; }
+        .heart { position: absolute; color: var(--accent-color); font-size: 20px; animation: fall linear infinite; z-index: 1; }
         @keyframes fall { to { transform: translateY(100vh); } }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <div class="heart-icon">❤️</div>
-        <h1>My Dearest Yohani</h1>
-        <p>Our journey together has been:</p>
-        <div class="timer" id="timer">Loading...</div>
+        <h1><span class="names">Yohani</span> & <span class="names">Yuresh</span></h1>
+        <p>Our beautiful journey together:</p>
+        
+        <div class="timer-grid" id="timer">
+            <!-- Time units -->
+        </div>
     </div>
 
     <script>
@@ -71,20 +74,31 @@
             document.body.appendChild(h);
             setTimeout(() => h.remove(), 6000);
         }
-        setInterval(createHeart, 400);
+        setInterval(createHeart, 500);
 
         function updateTimer() {
             const start = new Date("June 5, 2026 00:00:00");
             const now = new Date();
-            const diff = now - start;
             
-            const days = Math.floor(diff / (1000*60*60*24));
-            const hours = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
-            const mins = Math.floor((diff % (1000*60*60)) / (1000*60));
-            const secs = Math.floor((diff % (1000*60)) / 1000);
+            let diff = now - start;
             
-            document.getElementById("timer").innerHTML = 
-                `${days} Days, ${hours} Hours<br>${mins} Minutes, ${secs} Seconds`;
+            let years = now.getFullYear() - start.getFullYear();
+            let months = now.getMonth() - start.getMonth();
+            if (months < 0) { years--; months += 12; }
+            
+            let days = Math.floor(diff / (1000*60*60*24)) % 30;
+            let hours = Math.floor((diff / (1000*60*60)) % 24);
+            let mins = Math.floor((diff / (1000*60)) % 60);
+            let secs = Math.floor((diff / 1000) % 60);
+
+            document.getElementById("timer").innerHTML = `
+                <div class="time-box"><span class="time-val">${years}</span><span class="time-label">Years</span></div>
+                <div class="time-box"><span class="time-val">${months}</span><span class="time-label">Months</span></div>
+                <div class="time-box"><span class="time-val">${days}</span><span class="time-label">Days</span></div>
+                <div class="time-box"><span class="time-val">${hours}</span><span class="time-label">Hours</span></div>
+                <div class="time-box"><span class="time-val">${mins}</span><span class="time-label">Minutes</span></div>
+                <div class="time-box"><span class="time-val">${secs}</span><span class="time-label">Seconds</span></div>
+            `;
         }
         setInterval(updateTimer, 1000);
         updateTimer();
