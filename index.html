@@ -1,130 +1,425 @@
+<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Yohani & Yuresh ❤️</title> <style> @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap'); :root { --bg-color: #0f172a; --card-bg: rgba(30, 41, 59, 0.6); --text-color: #f8fafc; --accent-color: #f43f5e; } body { background-color: var(--bg-color); color: var(--text-color); font-family: 'Poppins', sans-serif; margin: 0; display: flex; justify-content: center; align-items: center; height: 100vh; overflow: hidden; background: radial-gradient(circle, #1e1b4b 0%, #0f172a 100%); } .container { background: var(--card-bg); padding: 30px; border-radius: 30px; backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.1); text-align: center; width: 90%; max-width: 500px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); } h1 { font-size: 1.8rem; margin-bottom: 5px; } .names { color: var(--accent-color); font-weight: 600; } p { opacity: 0.8; margin-bottom: 20px; font-size: 0.9rem; } /* Anniversary Breakdown */ .anniversary-info { background: rgba(244, 63, 94, 0.15); padding: 15px; border-radius: 20px; margin-bottom: 20px; border: 1px solid var(--accent-color); } .time-text { font-size: 1.1rem; font-weight: 600; color: #fff; } .timer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 20px; } .time-box { background: rgba(0,0,0,0.3); padding: 10px 5px; border-radius: 12px; } .time-val { font-size: 1.1rem; font-weight: bold; display: block; } .time-label { font-size: 0.5rem; text-transform: uppercase; opacity: 0.7; } .heart { position: absolute; color: var(--accent-color); font-size: 20px; animation: fall linear infinite; z-index: 1; } @keyframes fall { to { transform: translateY(100vh); } } </style> </head> <body> <div class="container"> <h1><span class="names">Yohani</span> & <span class="names">Yuresh</span></h1> <p>Our journey began on June 5, 2026</p> <!-- Anniversary Breakdown --> <div class="anniversary-info" id="anniversaryDetails"></div> <!-- Live Timer --> <div class="timer-grid" id="timer"></div> </div> <script> function createHeart() { const h = document.createElement('div'); h.innerHTML = '❤️'; h.className = 'heart'; h.style.left = Math.random() * 100 + 'vw'; h.style.animationDuration = Math.random() * 3 + 4 + 's'; document.body.appendChild(h); setTimeout(() => h.remove(), 7000); } setInterval(createHeart, 800); function updateDisplay() { const start = new Date("June 5, 2026 00:00:00"); const now = new Date(); let diff = now - start; // Anniversary Calculation (Years, Months, Days) let years = now.getFullYear() - start.getFullYear(); let months = now.getMonth() - start.getMonth(); let days = now.getDate() - start.getDate(); if (days < 0) { months--; days += new Date(now.getFullYear(), now.getMonth(), 0).getDate(); } if (months < 0) { years--; months += 12; } document.getElementById("anniversaryDetails").innerHTML = ` <div class="time-text">${years} Years, ${months} Months, ${days} Days together!</div> `; // Live Timer let hours = Math.floor((diff / (1000 * 60 * 60)) % 24); let mins = Math.floor((diff / (1000 * 60)) % 60); let secs = Math.floor((diff / 1000) % 60); document.getElementById("timer").innerHTML = ` <div class="time-box"><span class="time-val">${hours}</span><span class="time-label">Hours</span></div> <div class="time-box"><span class="time-val">${mins}</span><span class="time-label">Mins</span></div> <div class="time-box"><span class="time-val">${secs}</span><span class="time-label">Secs</span></div> <div class="time-box"><span class="time-val">${Math.floor(diff / (1000 * 60 * 60 * 24))}</span><span class="time-label">Total Days</span></div> `; } setInterval(updateDisplay, 1000); updateDisplay(); </script> </body> </html>
+[Cancelled]
+
+
+
+
+Please rewrite this code and create a sleek, modern, and professional website design for me <!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Yohani & Yuresh ❤️</title> <style> @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap'); :root { --bg-color: #0f172a; --card-bg: rgba(30, 41, 59, 0.6); --text-color: #f8fafc; --accent-color: #f43f5e; } body { background-color: var(--bg-color); color: var(--text-color); font-family: 'Poppins', sans-serif; margin: 0; display: flex; justify-content: center; align-items: center; height: 100vh; overflow: hidden; background: radial-gradient(circle, #1e1b4b 0%, #0f172a 100%); } .container { background: var(--card-bg); padding: 30px; border-radius: 30px; backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.1); text-align: center; width: 90%; max-width: 500px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); } h1 { font-size: 1.8rem; margin-bottom: 5px; } .names { color: var(--accent-color); font-weight: 600; } p { opacity: 0.8; margin-bottom: 20px; font-size: 0.9rem; } /* Anniversary Breakdown */ .anniversary-info { background: rgba(244, 63, 94, 0.15); padding: 15px; border-radius: 20px; margin-bottom: 20px; border: 1px solid var(--accent-color); } .time-text { font-size: 1.1rem; font-weight: 600; color: #fff; } .timer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 20px; } .time-box { background: rgba(0,0,0,0.3); padding: 10px 5px; border-radius: 12px; } .time-val { font-size: 1.1rem; font-weight: bold; display: block; } .time-label { font-size: 0.5rem; text-transform: uppercase; opacity: 0.7; } .heart { position: absolute; color: var(--accent-color); font-size: 20px; animation: fall linear infinite; z-index: 1; } @keyframes fall { to { transform: translateY(100vh); } } </style> </head> <body> <div class="container"> <h1><span class="names">Yohani</span> & <span class="names">Yuresh</span></h1> <p>Our journey began on June 5, 2026</p> <!-- Anniversary Breakdown --> <div class="anniversary-info" id="anniversaryDetails"></div> <!-- Live Timer --> <div class="timer-grid" id="timer"></div> </div> <script> function createHeart() { const h = document.createElement('div'); h.innerHTML = '❤️'; h.className = 'heart'; h.style.left = Math.random() * 100 + 'vw'; h.style.animationDuration = Math.random() * 3 + 4 + 's'; document.body.appendChild(h); setTimeout(() => h.remove(), 7000); } setInterval(createHeart, 800); function updateDisplay() { const start = new Date("June 5, 2026 00:00:00"); const now = new Date(); let diff = now - start; // Anniversary Calculation (Years, Months, Days) let years = now.getFullYear() - start.getFullYear(); let months = now.getMonth() - start.getMonth(); let days = now.getDate() - start.getDate(); if (days < 0) { months--; days += new Date(now.getFullYear(), now.getMonth(), 0).getDate(); } if (months < 0) { years--; months += 12; } document.getElementById("anniversaryDetails").innerHTML = ` <div class="time-text">${years} Years, ${months} Months, ${days} Days together!</div> `; // Live Timer let hours = Math.floor((diff / (1000 * 60 * 60)) % 24); let mins = Math.floor((diff / (1000 * 60)) % 60); let secs = Math.floor((diff / 1000) % 60); document.getElementById("timer").innerHTML = ` <div class="time-box"><span class="time-val">${hours}</span><span class="time-label">Hours</span></div> <div class="time-box"><span class="time-val">${mins}</span><span class="time-label">Mins</span></div> <div class="time-box"><span class="time-val">${secs}</span><span class="time-label">Secs</span></div> <div class="time-box"><span class="time-val">${Math.floor(diff / (1000 * 60 * 60 * 24))}</span><span class="time-label">Total Days</span></div> `; } setInterval(updateDisplay, 1000); updateDisplay(); </script> </body> </html>
+<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Yohani & Yuresh ❤️</title> <style> @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap'); :root { --bg-color: #0f172a; --card-bg: rgba(30, 41, 59, 0.6); --text-color: #f8fafc; --accent-color: #f43f5e; } body { background-color: var(--bg-color); color: var(--text-color); font-family: 'Poppins', sans-serif; margin: 0; display: flex; justify-content: center; align-items: center; height: 100vh; overflow: hidden; background: radial-gradient(circle, #1e1b4b 0%, #0f172a 100%); } .container { background: var(--card-bg); padding: 30px; border-radius: 30px; backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.1); text-align: center; width: 90%; max-width: 500px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); } h1 { font-size: 1.8rem; margin-bottom: 5px; } .names { color: var(--accent-color); font-weight: 600; } p { opacity: 0.8; margin-bottom: 20px; font-size: 0.9rem; } /* Anniversary Breakdown */ .anniversary-info { background: rgba(244, 63, 94, 0.15); padding: 15px; border-radius: 20px; margin-bottom: 20px; border: 1px solid var(--accent-color); } .time-text { font-size: 1.1rem; font-weight: 600; color: #fff; } .timer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 20px; } .time-box { background: rgba(0,0,0,0.3); padding: 10px 5px; border-radius: 12px; } .time-val { font-size: 1.1rem; font-weight: bold; display: block; } .time-label { font-size: 0.5rem; text-transform: uppercase; opacity: 0.7; } .heart { position: absolute; color: var(--accent-color); font-size: 20px; animation: fall linear infinite; z-index: 1; } @keyframes fall { to { transform: translateY(100vh); } } </style> </head> <body> <div class="container"> <h1><span class="names">Yohani</span> & <span class="names">Yuresh</span></h1> <p>Our journey began on June 5, 2026</p> <!-- Anniversary Breakdown --> <div class="anniversary-info" id="anniversaryDetails"></div> <!-- Live Timer --> <div class="timer-grid" id="timer"></div> </div> <script> function createHeart() { const h = document.createElement('div'); h.innerHTML = '❤️'; h.className = 'heart'; h.style.left = Math.random() * 100 + 'vw'; h.style.animationDuration = Math.random() * 3 + 4 + 's'; document.body.appendChild(h); setTimeout(() => h.remove(), 7000); } setInterval(createHeart, 800); function updateDisplay() { const start = new Date("June 5, 2026 00:00:00"); const now = new Date(); let diff = now - start; // Anniversary Calculation (Years, Months, Days) let years = now.getFullYear() - start.getFullYear(); let months = now.getMonth() - start.getMonth(); let days = now.getDate() - start.getDate(); if (days < 0) { months--; days += new Date(now.getFullYear(), now.getMonth(), 0).getDate(); } if (months < 0) { years--; months += 12; } document.getElementById("anniversaryDetails").innerHTML = ` <div class="time-text">${years} Years, ${months} Months, ${days} Days together!</div> `; // Live Timer let hours = Math.floor((diff / (1000 * 60 * 60)) % 24); let mins = Math.floor((diff / (1000 * 60)) % 60); let secs = Math.floor((diff / 1000) % 60); document.getElementById("timer").innerHTML = ` <div class="time-box"><span class="time-val">${hours}</span><span class="time-label">Hours</span></div> <div class="time-box"><span class="time-val">${mins}</span><span class="time-label">Mins</span></div> <div class="time-box"><span class="time-val">${secs}</span><span class="time-label">Secs</span></div> <div class="time-box"><span class="time-val">${Math.floor(diff / (1000 * 60 * 60 * 24))}</span><span class="time-label">Total Days</span></div> `; } setInterval(updateDisplay, 1000); updateDisplay(); </script> </body> </html> Please rewrite this code and create a sleek, modern, and professional website design for me
+
+Thought process
+The user wants me to redesign the HTML/CSS/JS code they've shared into a sleek, modern, and professional website design. This is a coding/design task, not an image generation task. I should rewrite the code with a better design.
+
+Let me create a more polished, modern version of this anniversary countdown website.
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yohani & Yuresh ❤️</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap');
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Yohani & Yuresh</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-        :root {
-            --bg-color: #0f172a;
-            --card-bg: rgba(30, 41, 59, 0.6);
-            --text-color: #f8fafc;
-            --accent-color: #f43f5e;
-        }
+    :root {
+      --rose:    #e11d48;
+      --rose-lt: #fb7185;
+      --gold:    #c9a96e;
+      --deep:    #0a0a14;
+      --surface: rgba(255,255,255,0.035);
+      --border:  rgba(255,255,255,0.07);
+      --text:    #f1f0ee;
+      --muted:   rgba(241,240,238,0.45);
+    }
 
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            font-family: 'Poppins', sans-serif;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            overflow: hidden;
-            background: radial-gradient(circle, #1e1b4b 0%, #0f172a 100%);
-        }
+    /* ── Canvas ─────────────────────────────────── */
+    body {
+      min-height: 100vh;
+      background: var(--deep);
+      background-image:
+        radial-gradient(ellipse 80% 60% at 50% -10%, rgba(225,29,72,0.18) 0%, transparent 65%),
+        radial-gradient(ellipse 60% 50% at 80% 110%, rgba(201,169,110,0.10) 0%, transparent 60%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      overflow: hidden;
+      padding: 20px;
+    }
 
-        .container {
-            background: var(--card-bg);
-            padding: 30px;
-            border-radius: 30px;
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255,255,255,0.1);
-            text-align: center;
-            width: 90%;
-            max-width: 500px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        }
+    /* ── Particle canvas ────────────────────────── */
+    #particles { position: fixed; inset: 0; pointer-events: none; z-index: 0; }
 
-        h1 { font-size: 1.8rem; margin-bottom: 5px; }
-        .names { color: var(--accent-color); font-weight: 600; }
-        p { opacity: 0.8; margin-bottom: 20px; font-size: 0.9rem; }
+    /* ── Card ───────────────────────────────────── */
+    .card {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      max-width: 520px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 48px 44px 44px;
+      backdrop-filter: blur(28px);
+      -webkit-backdrop-filter: blur(28px);
+      box-shadow:
+        0 0 0 1px rgba(255,255,255,0.04) inset,
+        0 32px 80px rgba(0,0,0,0.55),
+        0 0 120px rgba(225,29,72,0.06);
+    }
 
-        /* Anniversary Breakdown */
-        .anniversary-info {
-            background: rgba(244, 63, 94, 0.15);
-            padding: 15px;
-            border-radius: 20px;
-            margin-bottom: 20px;
-            border: 1px solid var(--accent-color);
-        }
-        .time-text { font-size: 1.1rem; font-weight: 600; color: #fff; }
+    /* ── Header ─────────────────────────────────── */
+    .eyebrow {
+      font-family: 'Inter', sans-serif;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .eyebrow::before, .eyebrow::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--gold), transparent);
+      opacity: 0.4;
+    }
 
-        .timer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 20px; }
-        .time-box { background: rgba(0,0,0,0.3); padding: 10px 5px; border-radius: 12px; }
-        .time-val { font-size: 1.1rem; font-weight: bold; display: block; }
-        .time-label { font-size: 0.5rem; text-transform: uppercase; opacity: 0.7; }
+    .names {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 6vw, 2.8rem);
+      font-weight: 300;
+      letter-spacing: 0.02em;
+      line-height: 1.1;
+      margin-bottom: 6px;
+    }
+    .names em {
+      font-style: italic;
+      color: var(--rose-lt);
+    }
+    .ampersand {
+      color: var(--gold);
+      font-size: 1.1em;
+      margin: 0 6px;
+    }
 
-        .heart { position: absolute; color: var(--accent-color); font-size: 20px; animation: fall linear infinite; z-index: 1; }
-        @keyframes fall { to { transform: translateY(100vh); } }
-    </style>
+    .since {
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      margin-bottom: 36px;
+    }
+
+    /* ── Divider ────────────────────────────────── */
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+    .divider-line {
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+    .divider-icon { font-size: 14px; opacity: 0.5; }
+
+    /* ── Anniversary pill ───────────────────────── */
+    .anniversary-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, rgba(225,29,72,0.15), rgba(201,169,110,0.10));
+      border: 1px solid rgba(225,29,72,0.25);
+      border-radius: 100px;
+      padding: 8px 20px;
+      font-size: 13px;
+      font-weight: 500;
+      margin-bottom: 32px;
+      color: #fda4af;
+      letter-spacing: 0.02em;
+    }
+    .pill-dot {
+      width: 6px; height: 6px;
+      background: var(--rose);
+      border-radius: 50%;
+      box-shadow: 0 0 8px var(--rose);
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: 0.6; transform: scale(0.8); }
+    }
+
+    /* ── Timer grid ─────────────────────────────── */
+    .timer-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-bottom: 32px;
+    }
+    .time-box {
+      background: rgba(0,0,0,0.3);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 16px 8px 12px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.3s;
+    }
+    .time-box::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(225,29,72,0.06) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .time-box:hover { border-color: rgba(225,29,72,0.35); }
+    .time-val {
+      display: block;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.85rem;
+      font-weight: 600;
+      line-height: 1;
+      color: #fff;
+      margin-bottom: 6px;
+      font-variant-numeric: tabular-nums;
+    }
+    .time-label {
+      display: block;
+      font-size: 9px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ── Stats row ──────────────────────────────── */
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-bottom: 36px;
+    }
+    .stat-item {
+      background: rgba(0,0,0,0.2);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 14px 10px;
+      text-align: center;
+    }
+    .stat-val {
+      display: block;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--gold);
+    }
+    .stat-label {
+      display: block;
+      font-size: 9px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 3px;
+    }
+
+    /* ── Footer quote ───────────────────────────── */
+    .quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.6;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+    }
+    .quote span { color: var(--rose-lt); opacity: 0.8; }
+
+    /* ── Responsive ─────────────────────────────── */
+    @media (max-width: 400px) {
+      .card { padding: 36px 24px 32px; }
+      .timer-grid { gap: 7px; }
+      .stats-row  { gap: 7px; }
+    }
+  </style>
 </head>
 <body>
 
-    <div class="container">
-        <h1><span class="names">Yohani</span> & <span class="names">Yuresh</span></h1>
-        <p>Our journey began on June 5, 2026</p>
-        
-        <!-- Anniversary Breakdown -->
-        <div class="anniversary-info" id="anniversaryDetails"></div>
+<canvas id="particles"></canvas>
 
-        <!-- Live Timer -->
-        <div class="timer-grid" id="timer"></div>
+<div class="card">
+
+  <div class="eyebrow">A Love Story</div>
+
+  <h1 class="names">
+    <em>Yohani</em>
+    <span class="ampersand">&</span>
+    <em>Yuresh</em>
+  </h1>
+  <p class="since">Together since June 5, 2026</p>
+
+  <div class="divider">
+    <div class="divider-line"></div>
+    <span class="divider-icon">♡</span>
+    <div class="divider-line"></div>
+  </div>
+
+  <div style="display:flex; justify-content:center; margin-bottom:28px;">
+    <div class="anniversary-pill">
+      <span class="pill-dot"></span>
+      <span id="anniversaryText">Loading…</span>
     </div>
+  </div>
 
-    <script>
-        function createHeart() {
-            const h = document.createElement('div');
-            h.innerHTML = '❤️';
-            h.className = 'heart';
-            h.style.left = Math.random() * 100 + 'vw';
-            h.style.animationDuration = Math.random() * 3 + 4 + 's';
-            document.body.appendChild(h);
-            setTimeout(() => h.remove(), 7000);
+  <!-- Live Countdown -->
+  <div class="timer-grid" id="timer">
+    <div class="time-box"><span class="time-val" id="t-days">0</span><span class="time-label">Days</span></div>
+    <div class="time-box"><span class="time-val" id="t-hrs">0</span><span class="time-label">Hours</span></div>
+    <div class="time-box"><span class="time-val" id="t-min">0</span><span class="time-label">Minutes</span></div>
+    <div class="time-box"><span class="time-val" id="t-sec">0</span><span class="time-label">Seconds</span></div>
+  </div>
+
+  <!-- Stats row -->
+  <div class="stats-row">
+    <div class="stat-item"><span class="stat-val" id="s-hrs">0</span><span class="stat-label">Total Hours</span></div>
+    <div class="stat-item"><span class="stat-val" id="s-min">0</span><span class="stat-label">Total Minutes</span></div>
+    <div class="stat-item"><span class="stat-val" id="s-hbt">0</span><span class="stat-label">Heartbeats ♡</span></div>
+  </div>
+
+  <p class="quote">"In all the world, there is no heart for me like yours.<br/><span>In all the world, there is no love for you like mine.</span>"</p>
+
+</div>
+
+<script>
+  /* ── Particle System ─────────────────────────────── */
+  (function () {
+    const canvas = document.getElementById('particles');
+    const ctx    = canvas.getContext('2d');
+    let W, H, particles = [];
+
+    function resize() {
+      W = canvas.width  = window.innerWidth;
+      H = canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resize);
+    resize();
+
+    function rand(min, max) { return Math.random() * (max - min) + min; }
+
+    function createParticle() {
+      return {
+        x: rand(0, W),
+        y: rand(H, H * 1.2),
+        r: rand(1, 3.5),
+        speed: rand(0.3, 1.0),
+        opacity: rand(0.15, 0.55),
+        drift: rand(-0.2, 0.2),
+        type: Math.random() > 0.7 ? 'heart' : 'dot',
+      };
+    }
+
+    for (let i = 0; i < 55; i++) {
+      const p = createParticle();
+      p.y = rand(0, H);
+      particles.push(p);
+    }
+
+    function drawHeart(x, y, size, alpha) {
+      ctx.save();
+      ctx.globalAlpha = alpha;
+      ctx.fillStyle = '#e11d48';
+      ctx.translate(x, y);
+      ctx.scale(size / 16, size / 16);
+      ctx.beginPath();
+      ctx.moveTo(0, -4);
+      ctx.bezierCurveTo(-8, -12, -16, -4, -16, 4);
+      ctx.bezierCurveTo(-16, 10, -8, 16, 0, 22);
+      ctx.bezierCurveTo(8,  16,  16, 10,  16, 4);
+      ctx.bezierCurveTo(16, -4,   8, -12,   0, -4);
+      ctx.fill();
+      ctx.restore();
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, W, H);
+      particles.forEach(p => {
+        p.y     -= p.speed;
+        p.x     += p.drift;
+        p.opacity -= 0.0008;
+
+        if (p.y < -20 || p.opacity <= 0) {
+          Object.assign(p, createParticle());
         }
-        setInterval(createHeart, 800);
 
-        function updateDisplay() {
-            const start = new Date("June 5, 2026 00:00:00");
-            const now = new Date();
-            let diff = now - start;
-
-            // Anniversary Calculation (Years, Months, Days)
-            let years = now.getFullYear() - start.getFullYear();
-            let months = now.getMonth() - start.getMonth();
-            let days = now.getDate() - start.getDate();
-            
-            if (days < 0) {
-                months--;
-                days += new Date(now.getFullYear(), now.getMonth(), 0).getDate();
-            }
-            if (months < 0) {
-                years--;
-                months += 12;
-            }
-
-            document.getElementById("anniversaryDetails").innerHTML = `
-                <div class="time-text">${years} Years, ${months} Months, ${days} Days together!</div>
-            `;
-
-            // Live Timer
-            let hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-            let mins = Math.floor((diff / (1000 * 60)) % 60);
-            let secs = Math.floor((diff / 1000) % 60);
-
-            document.getElementById("timer").innerHTML = `
-                <div class="time-box"><span class="time-val">${hours}</span><span class="time-label">Hours</span></div>
-                <div class="time-box"><span class="time-val">${mins}</span><span class="time-label">Mins</span></div>
-                <div class="time-box"><span class="time-val">${secs}</span><span class="time-label">Secs</span></div>
-                <div class="time-box"><span class="time-val">${Math.floor(diff / (1000 * 60 * 60 * 24))}</span><span class="time-label">Total Days</span></div>
-            `;
+        if (p.type === 'heart') {
+          drawHeart(p.x, p.y, p.r * 4, p.opacity);
+        } else {
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(225,29,72,${p.opacity})`;
+          ctx.fill();
         }
-        setInterval(updateDisplay, 1000);
-        updateDisplay();
-    </script>
+      });
+      requestAnimationFrame(animate);
+    }
+    animate();
+  })();
+
+  /* ── Timer Logic ─────────────────────────────────── */
+  function pad(n) { return String(Math.floor(n)).padStart(2, '0'); }
+
+  function fmt(n) {
+    if (n >= 1_000_000) return (n / 1_000_000).toFixed(1) + 'M';
+    if (n >= 1_000)     return (n / 1_000).toFixed(1) + 'K';
+    return String(Math.floor(n));
+  }
+
+  function updateDisplay() {
+    const start = new Date("June 5, 2026 00:00:00");
+    const now   = new Date();
+    const diff  = now - start;  // ms (negative if in the future)
+
+    /* ── Anniversary text (years · months · days) */
+    let y = now.getFullYear() - start.getFullYear();
+    let m = now.getMonth()    - start.getMonth();
+    let d = now.getDate()     - start.getDate();
+    if (d < 0) { m--; d += new Date(now.getFullYear(), now.getMonth(), 0).getDate(); }
+    if (m < 0) { y--; m += 12; }
+
+    const parts = [];
+    if (y > 0) parts.push(`${y} ${y === 1 ? 'Year'  : 'Years'}`);
+    if (m > 0) parts.push(`${m} ${m === 1 ? 'Month' : 'Months'}`);
+    parts.push(`${d} ${d === 1 ? 'Day' : 'Days'}`);
+    document.getElementById('anniversaryText').textContent = parts.join(' · ') + ' together';
+
+    /* ── Live breakdown (days / hrs / min / sec) */
+    const absDiff   = Math.abs(diff);
+    const totalSec  = Math.floor(absDiff / 1000);
+    const totalMin  = Math.floor(absDiff / (1000 * 60));
+    const totalHrs  = Math.floor(absDiff / (1000 * 60 * 60));
+    const totalDays = Math.floor(absDiff / (1000 * 60 * 60 * 24));
+
+    document.getElementById('t-days').textContent = pad(totalDays % 365);
+    document.getElementById('t-hrs' ).textContent = pad(totalHrs  % 24);
+    document.getElementById('t-min' ).textContent = pad(totalMin  % 60);
+    document.getElementById('t-sec' ).textContent = pad(totalSec  % 60);
+
+    /* ── Stats */
+    document.getElementById('s-hrs').textContent = fmt(totalHrs);
+    document.getElementById('s-min').textContent = fmt(totalMin);
+    document.getElementById('s-hbt').textContent = fmt(totalSec * 1.167); // avg 70bpm
+  }
+
+  setInterval(updateDisplay, 1000);
+  updateDisplay();
+</script>
 </body>
 </html>
-
