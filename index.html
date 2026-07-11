@@ -43,15 +43,20 @@
         .names { color: var(--accent-color); font-weight: 600; }
         p { opacity: 0.8; margin-bottom: 20px; font-size: 0.9rem; }
 
+        /* Anniversary Breakdown */
+        .anniversary-info {
+            background: rgba(244, 63, 94, 0.15);
+            padding: 15px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            border: 1px solid var(--accent-color);
+        }
+        .time-text { font-size: 1.1rem; font-weight: 600; color: #fff; }
+
         .timer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 20px; }
         .time-box { background: rgba(0,0,0,0.3); padding: 10px 5px; border-radius: 12px; }
         .time-val { font-size: 1.1rem; font-weight: bold; display: block; }
         .time-label { font-size: 0.5rem; text-transform: uppercase; opacity: 0.7; }
-
-        .extra-info { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 15px; margin-top: 10px; }
-        .val-text { color: var(--accent-color); font-weight: bold; font-size: 0.9rem; }
-        
-        marquee { margin-top: 10px; font-size: 0.8rem; color: #cbd5e1; font-style: italic; }
 
         .heart { position: absolute; color: var(--accent-color); font-size: 20px; animation: fall linear infinite; z-index: 1; }
         @keyframes fall { to { transform: translateY(100vh); } }
@@ -63,16 +68,14 @@
         <h1><span class="names">Yohani</span> & <span class="names">Yuresh</span></h1>
         <p>Our journey began on June 5, 2026</p>
         
-        <div class="timer-grid" id="timer"></div>
+        <!-- Anniversary Breakdown -->
+        <div class="anniversary-info" id="anniversaryDetails"></div>
 
-        <div class="extra-info">
-            <div class="val-text" id="valentineCount"></div>
-            <marquee behavior="scroll" direction="left">Every second with you is a beautiful dream come true... I love you more than words can say!</marquee>
-        </div>
+        <!-- Live Timer -->
+        <div class="timer-grid" id="timer"></div>
     </div>
 
     <script>
-        // Falling hearts
         function createHeart() {
             const h = document.createElement('div');
             h.innerHTML = '❤️';
@@ -85,31 +88,43 @@
         setInterval(createHeart, 800);
 
         function updateDisplay() {
-            // Journey Timer
             const start = new Date("June 5, 2026 00:00:00");
             const now = new Date();
             let diff = now - start;
+
+            // Anniversary Calculation (Years, Months, Days)
+            let years = now.getFullYear() - start.getFullYear();
+            let months = now.getMonth() - start.getMonth();
+            let days = now.getDate() - start.getDate();
             
-            let totalDays = Math.floor(diff / (1000 * 60 * 60 * 24));
+            if (days < 0) {
+                months--;
+                days += new Date(now.getFullYear(), now.getMonth(), 0).getDate();
+            }
+            if (months < 0) {
+                years--;
+                months += 12;
+            }
+
+            document.getElementById("anniversaryDetails").innerHTML = `
+                <div class="time-text">${years} Years, ${months} Months, ${days} Days together!</div>
+            `;
+
+            // Live Timer
             let hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
             let mins = Math.floor((diff / (1000 * 60)) % 60);
             let secs = Math.floor((diff / 1000) % 60);
 
             document.getElementById("timer").innerHTML = `
-                <div class="time-box"><span class="time-val">${totalDays}</span><span class="time-label">Days</span></div>
                 <div class="time-box"><span class="time-val">${hours}</span><span class="time-label">Hours</span></div>
                 <div class="time-box"><span class="time-val">${mins}</span><span class="time-label">Mins</span></div>
                 <div class="time-box"><span class="time-val">${secs}</span><span class="time-label">Secs</span></div>
+                <div class="time-box"><span class="time-val">${Math.floor(diff / (1000 * 60 * 60 * 24))}</span><span class="time-label">Total Days</span></div>
             `;
-
-            // Valentine's Countdown
-            const nextValentine = new Date("February 14, 2027 00:00:00");
-            let vDiff = nextValentine - now;
-            let vDays = Math.floor(vDiff / (1000 * 60 * 60 * 24));
-            document.getElementById("valentineCount").innerText = `Days until Valentine's Day: ${vDays} days left!`;
         }
         setInterval(updateDisplay, 1000);
         updateDisplay();
     </script>
 </body>
 </html>
+
