@@ -3,50 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yohani's Love Scanner ❤️</title>
+    <title>Love Fingerprint Scanner ❤️</title>
     <style>
-        body { background: #ffeef2; font-family: 'Arial', sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
-        .card { background: white; padding: 30px; border-radius: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); text-align: center; width: 320px; }
-        input { padding: 10px; width: 80%; margin-bottom: 20px; border: 2px solid #ff7675; border-radius: 10px; }
-        button { padding: 12px 25px; background: #ff4757; color: white; border: none; border-radius: 20px; cursor: pointer; font-weight: bold; }
-        #scanner { width: 100%; height: 10px; background: #eee; border-radius: 5px; margin-top: 20px; display: none; overflow: hidden; }
-        #bar { width: 0%; height: 100%; background: #00b894; }
-        #result { margin-top: 20px; font-weight: bold; color: #d63031; display: none; }
+        body { background: #1a1a2e; color: white; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0; font-family: sans-serif; }
+        .scanner-box { text-align: center; background: #16213e; padding: 30px; border-radius: 30px; box-shadow: 0 0 20px rgba(255, 71, 87, 0.5); }
+        #fingerprint { font-size: 80px; color: #ff4757; cursor: pointer; transition: 0.3s; }
+        #fingerprint:active { color: #00b894; transform: scale(0.95); }
+        #bar { width: 200px; height: 10px; background: #333; margin: 20px auto; border-radius: 5px; overflow: hidden; display: none; }
+        #progress { width: 0%; height: 100%; background: #00b894; }
+        #result { margin-top: 20px; font-size: 20px; color: #ff7675; font-weight: bold; }
     </style>
 </head>
 <body>
 
-<div class="card">
-    <h2>ආදරේ ස්කෑනර් එක ❤️</h2>
-    <input type="text" id="name" placeholder="ඔයාගේ නම ලියන්න...">
-    <button onclick="scan()">ස්කෑන් කරන්න</button>
-    
-    <div id="scanner"><div id="bar"></div></div>
-    <div id="result"></div>
-</div>
+    <div class="scanner-box">
+        <h2>ආදරේ ස්කෑනර් එක ❤️</h2>
+        <p>ඔයාගේ ඇඟිල්ල මෙතන තියන් ඉන්න...</p>
+        
+        <!-- ෆින්ගර් ප්‍රින්ට් අයිකන් එක -->
+        <div id="fingerprint" onmousedown="startScan()" onmouseup="stopScan()" ontouchstart="startScan()" ontouchend="stopScan()">
+            👆
+        </div>
 
-<script>
-    function scan() {
-        const name = document.getElementById('name').value;
-        if(name === "") { alert("කරුණාකර නම ඇතුළත් කරන්න!"); return; }
-        
-        document.getElementById('scanner').style.display = 'block';
-        document.getElementById('result').style.display = 'none';
-        let bar = document.getElementById('bar');
-        bar.style.width = "0%";
-        
-        let width = 0;
-        let interval = setInterval(() => {
-            if (width >= 100) {
+        <div id="bar"><div id="progress"></div></div>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        let interval;
+        let progress = 0;
+
+        function startScan() {
+            document.getElementById('bar').style.display = 'block';
+            document.getElementById('result').innerText = "ස්කෑන් වෙමින් පවතී...";
+            interval = setInterval(() => {
+                if (progress < 100) {
+                    progress++;
+                    document.getElementById('progress').style.width = progress + "%";
+                } else {
+                    clearInterval(interval);
+                    document.getElementById('result').innerHTML = "ආදරේ මට්ටම: 100%<br>මන් ඔයාට ගොඩක් ආදරෙයි මගෙ රත්තරන් Yohani! ❤️";
+                }
+            }, 30);
+        }
+
+        function stopScan() {
+            if (progress < 100) {
                 clearInterval(interval);
-                document.getElementById('result').style.display = 'block';
-                document.getElementById('result').innerHTML = `ආදරේ මට්ටම: 100%<br>මන් ඔයාට ගොඩක් ආදරෙයි මගෙ රත්තරන් Yohani! ❤️`;
-            } else {
-                width++;
-                bar.style.width = width + "%";
+                progress = 0;
+                document.getElementById('progress').style.width = "0%";
+                document.getElementById('bar').style.display = 'none';
+                document.getElementById('result').innerText = "ඇඟිල්ල අයින් කරන්න එපා!";
             }
-        }, 30);
-    }
-</script>
+        }
+    </script>
 </body>
 </html>
