@@ -29,28 +29,29 @@
 
         .container {
             background: var(--card-bg);
-            padding: 40px;
+            padding: 30px;
             border-radius: 30px;
             backdrop-filter: blur(20px);
             border: 1px solid rgba(255,255,255,0.1);
             text-align: center;
-            animation: fadeIn 2s ease-in;
             width: 90%;
-            max-width: 600px;
+            max-width: 500px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
 
-        @keyframes fadeIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+        h1 { font-size: 1.8rem; margin-bottom: 5px; }
+        .names { color: var(--accent-color); font-weight: 600; }
+        p { opacity: 0.8; margin-bottom: 20px; font-size: 0.9rem; }
 
-        h1 { font-size: 2rem; margin-bottom: 5px; }
-        .names { color: var(--accent-color); font-weight: 600; text-shadow: 0 0 10px rgba(244, 63, 94, 0.5); }
-        p { opacity: 0.8; margin-bottom: 25px; }
+        .timer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 20px; }
+        .time-box { background: rgba(0,0,0,0.3); padding: 10px 5px; border-radius: 12px; }
+        .time-val { font-size: 1.1rem; font-weight: bold; display: block; }
+        .time-label { font-size: 0.5rem; text-transform: uppercase; opacity: 0.7; }
 
-        .timer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
-        .time-box { background: rgba(0,0,0,0.3); padding: 15px 5px; border-radius: 15px; transition: 0.3s; }
-        .time-box:hover { transform: translateY(-5px); background: rgba(244, 63, 94, 0.2); }
-        .time-val { font-size: 1.2rem; font-weight: bold; display: block; color: #fff; }
-        .time-label { font-size: 0.6rem; text-transform: uppercase; opacity: 0.7; letter-spacing: 1px; }
+        .extra-info { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 15px; margin-top: 10px; }
+        .val-text { color: var(--accent-color); font-weight: bold; font-size: 0.9rem; }
+        
+        marquee { margin-top: 10px; font-size: 0.8rem; color: #cbd5e1; font-style: italic; }
 
         .heart { position: absolute; color: var(--accent-color); font-size: 20px; animation: fall linear infinite; z-index: 1; }
         @keyframes fall { to { transform: translateY(100vh); } }
@@ -63,10 +64,15 @@
         <p>Our journey began on June 5, 2026</p>
         
         <div class="timer-grid" id="timer"></div>
+
+        <div class="extra-info">
+            <div class="val-text" id="valentineCount"></div>
+            <marquee behavior="scroll" direction="left">Every second with you is a beautiful dream come true... I love you more than words can say!</marquee>
+        </div>
     </div>
 
     <script>
-        // Falling hearts animation
+        // Falling hearts
         function createHeart() {
             const h = document.createElement('div');
             h.innerHTML = '❤️';
@@ -76,10 +82,10 @@
             document.body.appendChild(h);
             setTimeout(() => h.remove(), 7000);
         }
-        setInterval(createHeart, 500);
+        setInterval(createHeart, 800);
 
-        // Timer update
-        function updateTimer() {
+        function updateDisplay() {
+            // Journey Timer
             const start = new Date("June 5, 2026 00:00:00");
             const now = new Date();
             let diff = now - start;
@@ -95,9 +101,15 @@
                 <div class="time-box"><span class="time-val">${mins}</span><span class="time-label">Mins</span></div>
                 <div class="time-box"><span class="time-val">${secs}</span><span class="time-label">Secs</span></div>
             `;
+
+            // Valentine's Countdown
+            const nextValentine = new Date("February 14, 2027 00:00:00");
+            let vDiff = nextValentine - now;
+            let vDays = Math.floor(vDiff / (1000 * 60 * 60 * 24));
+            document.getElementById("valentineCount").innerText = `Days until Valentine's Day: ${vDays} days left!`;
         }
-        setInterval(updateTimer, 1000);
-        updateTimer();
+        setInterval(updateDisplay, 1000);
+        updateDisplay();
     </script>
 </body>
 </html>
