@@ -36,20 +36,21 @@
             text-align: center;
             animation: fadeIn 2s ease-in;
             width: 90%;
-            max-width: 500px;
+            max-width: 600px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
 
         @keyframes fadeIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
 
-        h1 { font-size: 2.2rem; margin-bottom: 20px; }
+        h1 { font-size: 2rem; margin-bottom: 5px; }
         .names { color: var(--accent-color); font-weight: 600; text-shadow: 0 0 10px rgba(244, 63, 94, 0.5); }
+        p { opacity: 0.8; margin-bottom: 25px; }
 
-        .timer-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-top: 30px; }
-        .time-box { background: rgba(0,0,0,0.3); padding: 15px; border-radius: 15px; transition: 0.3s; }
+        .timer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+        .time-box { background: rgba(0,0,0,0.3); padding: 15px 5px; border-radius: 15px; transition: 0.3s; }
         .time-box:hover { transform: translateY(-5px); background: rgba(244, 63, 94, 0.2); }
-        .time-val { font-size: 1.5rem; font-weight: bold; display: block; color: #fff; }
-        .time-label { font-size: 0.7rem; text-transform: uppercase; opacity: 0.8; letter-spacing: 1px; }
+        .time-val { font-size: 1.2rem; font-weight: bold; display: block; color: #fff; }
+        .time-label { font-size: 0.6rem; text-transform: uppercase; opacity: 0.7; letter-spacing: 1px; }
 
         .heart { position: absolute; color: var(--accent-color); font-size: 20px; animation: fall linear infinite; z-index: 1; }
         @keyframes fall { to { transform: translateY(100vh); } }
@@ -65,6 +66,7 @@
     </div>
 
     <script>
+        // Falling hearts animation
         function createHeart() {
             const h = document.createElement('div');
             h.innerHTML = '❤️';
@@ -76,36 +78,22 @@
         }
         setInterval(createHeart, 500);
 
+        // Timer update
         function updateTimer() {
             const start = new Date("June 5, 2026 00:00:00");
             const now = new Date();
-            
             let diff = now - start;
             
-            let years = now.getFullYear() - start.getFullYear();
-            let months = now.getMonth() - start.getMonth();
-            let days = now.getDate() - start.getDate();
-            
-            if (days < 0) {
-                months--;
-                days += new Date(now.getFullYear(), now.getMonth(), 0).getDate();
-            }
-            if (months < 0) {
-                years--;
-                months += 12;
-            }
-
-            let hours = now.getHours();
-            let mins = now.getMinutes();
-            let secs = now.getSeconds();
+            let totalDays = Math.floor(diff / (1000 * 60 * 60 * 24));
+            let hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+            let mins = Math.floor((diff / (1000 * 60)) % 60);
+            let secs = Math.floor((diff / 1000) % 60);
 
             document.getElementById("timer").innerHTML = `
-                <div class="time-box"><span class="time-val">${years}</span><span class="time-label">Years</span></div>
-                <div class="time-box"><span class="time-val">${months}</span><span class="time-label">Months</span></div>
-                <div class="time-box"><span class="time-val">${days}</span><span class="time-label">Days</span></div>
+                <div class="time-box"><span class="time-val">${totalDays}</span><span class="time-label">Days</span></div>
                 <div class="time-box"><span class="time-val">${hours}</span><span class="time-label">Hours</span></div>
-                <div class="time-box"><span class="time-val">${mins}</span><span class="time-label">Minutes</span></div>
-                <div class="time-box"><span class="time-val">${secs}</span><span class="time-label">Seconds</span></div>
+                <div class="time-box"><span class="time-val">${mins}</span><span class="time-label">Mins</span></div>
+                <div class="time-box"><span class="time-val">${secs}</span><span class="time-label">Secs</span></div>
             `;
         }
         setInterval(updateTimer, 1000);
