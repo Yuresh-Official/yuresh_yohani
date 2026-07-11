@@ -3,87 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For My Yohani ❤️</title>
+    <title>My Love Album for Yohani ❤️</title>
     <style>
-        body {
-            margin: 0;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            background: #ffdee9;
-            font-family: 'Segoe UI', sans-serif;
-            overflow: hidden;
-            position: relative;
-        }
-
-        /* හදවත් වැටෙන ඇනිමේෂන් එක */
-        .heart {
-            position: absolute;
-            color: #ff4757;
-            font-size: 20px;
-            animation: fall linear forwards;
-        }
-
-        @keyframes fall {
-            to { transform: translateY(100vh); }
-        }
-
-        h1 { color: #d63031; font-size: 2.5rem; z-index: 10; text-align: center; }
-
-        .btn-container { z-index: 10; margin-top: 50px; }
-
-        button {
-            padding: 15px 40px;
-            font-size: 20px;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: 0.3s;
-            margin: 10px;
-        }
-
-        #yesBtn { background-color: #00b894; color: white; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
-        #noBtn { background-color: #d63031; color: white; position: absolute; }
+        body { margin: 0; display: flex; justify-content: center; align-items: center; height: 100vh; background: #ffdee9; font-family: 'Arial', sans-serif; }
+        .album-card { width: 350px; background: white; padding: 20px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); text-align: center; }
+        .photo { width: 100%; height: 350px; background-size: cover; background-position: center; border-radius: 15px; border: 5px solid #fff; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        h2 { color: #d63031; margin-top: 15px; }
+        button { margin-top: 20px; padding: 10px 25px; border: none; border-radius: 20px; background: #ff4757; color: white; cursor: pointer; font-size: 16px; font-weight: bold; }
+        button:hover { background: #ff6b81; }
     </style>
 </head>
 <body>
 
-    <h1 id="question">මගෙ රත්තරන් Yohani, ඔයා මට ආදරෙයිද? ❤️</h1>
-    
-    <div class="btn-container">
-        <button id="yesBtn" onclick="showLove()">ඔව්! ❤️</button>
-        <button id="noBtn" onmouseover="moveButton()">නැ</button>
+    <div class="album-card">
+        <div id="photoContainer" class="photo" style="background-image: url('https://i.ibb.co/zYNqjSL/IMG-20260612-WA0031-1.jpg');"></div>
+        <h2 id="caption">මගෙ රත්තරන් Yohani ❤️</h2>
+        <button onclick="nextPhoto()">ඊළඟ මතකය ➡️</button>
     </div>
 
     <script>
-        // හදවත් වැටෙන ෆන්ෂන් එක
-        function createHeart() {
-            const heart = document.createElement('div');
-            heart.innerHTML = '❤️';
-            heart.className = 'heart';
-            heart.style.left = Math.random() * 100 + 'vw';
-            heart.style.animationDuration = Math.random() * 3 + 2 + 's';
-            document.body.appendChild(heart);
-            setTimeout(() => heart.remove(), 5000);
-        }
-        setInterval(createHeart, 300);
-
-        // "නැ" බොත්තම දුවන එක
-        function moveButton() {
-            const btn = document.getElementById('noBtn');
-            btn.style.left = Math.random() * (window.innerWidth - 100) + "px";
-            btn.style.top = Math.random() * (window.innerHeight - 100) + "px";
-        }
-
-        // "ඔව්" එබුවහම වෙන දේ
-        function showLove() {
-            document.body.innerHTML = `
-                <h1 style="color: #d63031;">මම දන්නවා ඔයා මට ආදරෙයි කියලා! ❤️</h1>
-                <p style="font-size: 30px; font-weight: bold; color: #e84393;">මන් ඔයාට ගොඩක් ආදරෙයි මගෙ රත්තරන් Yohani! 😘</p>
-            `;
+        const photos = [
+            { url: 'https://i.ibb.co/zYNqjSL/IMG-20260612-WA0031-1.jpg', text: 'මගෙ රත්තරන් Yohani ❤️' },
+            { url: 'https://i.ibb.co/zHPDRBqX/IMG-20260612-WA0024.jpg', text: 'අපේ ලස්සන මතකයන්...' },
+            { url: 'https://i.ibb.co/ZzFrvB5F/IMG-20260704-WA0028.jpg', text: 'ඔයා මගෙ ලෝකයයි! 😘' }
+        ];
+        
+        let index = 0;
+        function nextPhoto() {
+            index = (index + 1) % photos.length;
+            document.getElementById('photoContainer').style.backgroundImage = `url('${photos[index].url}')`;
+            document.getElementById('caption').innerText = photos[index].text;
         }
     </script>
 </body>
