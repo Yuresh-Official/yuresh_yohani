@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>මගෙන් ප්‍රශ්නයක්!</title>
+    <style>
+        body { text-align: center; font-family: sans-serif; padding-top: 100px; }
+        .buttons { margin-top: 30px; position: relative; height: 100px; }
+        button { padding: 10px 20px; font-size: 18px; cursor: pointer; border: none; border-radius: 5px; }
+        #yesBtn { background-color: green; color: white; margin-right: 20px; }
+        #noBtn { background-color: red; color: white; position: absolute; }
+    </style>
+</head>
+<body>
+
+    <h1>ඔයා මට ආදරෙයිද?</h1>
+    <div class="buttons">
+        <button id="yesBtn" onclick="showLove()">ඔව්</button>
+        <button id="noBtn" onmouseover="moveNoButton()">නැ</button>
+    </div>
+
+    <script>
+        function showLove() {
+            alert("මන් දන්නවා ඔයා මට ආදරෙයි කියලා! මන් ඔයාට ගොඩක් ආදරෙයි මගෙ රත්තරන් Yohani!");
+        }
+
+        function moveNoButton() {
+            const btn = document.getElementById('noBtn');
+            const x = Math.random() * (window.innerWidth - 100);
+            const y = Math.random() * (window.innerHeight - 100);
+            btn.style.left = x + "px";
+            btn.style.top = y + "px";
+        }
+    </script>
+</body>
+</html>
+
