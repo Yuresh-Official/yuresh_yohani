@@ -2,60 +2,43 @@
 <html lang="si">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Love Fingerprint Scanner ❤️</title>
+    <title>Our Love Journey ❤️</title>
     <style>
-        body { background: #1a1a2e; color: white; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0; font-family: sans-serif; }
-        .scanner-box { text-align: center; background: #16213e; padding: 30px; border-radius: 30px; box-shadow: 0 0 20px rgba(255, 71, 87, 0.5); }
-        #fingerprint { font-size: 80px; color: #ff4757; cursor: pointer; transition: 0.3s; }
-        #fingerprint:active { color: #00b894; transform: scale(0.95); }
-        #bar { width: 200px; height: 10px; background: #333; margin: 20px auto; border-radius: 5px; overflow: hidden; display: none; }
-        #progress { width: 0%; height: 100%; background: #00b894; }
-        #result { margin-top: 20px; font-size: 20px; color: #ff7675; font-weight: bold; }
+        body { background: #fdf6f7; font-family: 'Segoe UI', sans-serif; text-align: center; padding: 20px; }
+        .card { background: white; padding: 30px; border-radius: 25px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); max-width: 500px; margin: auto; }
+        h1 { color: #d63031; }
+        .timer { font-size: 24px; font-weight: bold; color: #e84393; margin: 20px 0; }
+        .photo { width: 100%; height: 300px; background-size: cover; background-position: center; border-radius: 15px; margin-top: 20px; }
     </style>
 </head>
 <body>
 
-    <div class="scanner-box">
-        <h2>ආදරේ ස්කෑනර් එක ❤️</h2>
-        <p>ඔයාගේ ඇඟිල්ල මෙතන තියන් ඉන්න...</p>
+    <div class="card">
+        <h1>අපේ ආදරණීය ගමන ❤️</h1>
+        <p>ජූනි 5, 2026 සිට අද දක්වා...</p>
         
-        <!-- ෆින්ගර් ප්‍රින්ට් අයිකන් එක -->
-        <div id="fingerprint" onmousedown="startScan()" onmouseup="stopScan()" ontouchstart="startScan()" ontouchend="stopScan()">
-            👆
-        </div>
+        <div class="timer" id="timer">ගණනය කරමින්...</div>
 
-        <div id="bar"><div id="progress"></div></div>
-        <div id="result"></div>
+        <div class="photo" style="background-image: url('https://i.ibb.co/zYNqjSL/IMG-20260612-WA0031-1.jpg');"></div>
+        <p style="margin-top: 15px;">එකම හදවතක්, එකම ආදරයක්!</p>
     </div>
 
     <script>
-        let interval;
-        let progress = 0;
+        function updateTimer() {
+            const startDate = new Date("June 5, 2026 00:00:00");
+            const now = new Date();
+            const diff = now - startDate;
 
-        function startScan() {
-            document.getElementById('bar').style.display = 'block';
-            document.getElementById('result').innerText = "ස්කෑන් වෙමින් පවතී...";
-            interval = setInterval(() => {
-                if (progress < 100) {
-                    progress++;
-                    document.getElementById('progress').style.width = progress + "%";
-                } else {
-                    clearInterval(interval);
-                    document.getElementById('result').innerHTML = "ආදරේ මට්ටම: 100%<br>මන් ඔයාට ගොඩක් ආදරෙයි මගෙ රත්තරන් Yohani! ❤️";
-                }
-            }, 30);
-        }
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
-        function stopScan() {
-            if (progress < 100) {
-                clearInterval(interval);
-                progress = 0;
-                document.getElementById('progress').style.width = "0%";
-                document.getElementById('bar').style.display = 'none';
-                document.getElementById('result').innerText = "ඇඟිල්ල අයින් කරන්න එපා!";
-            }
+            document.getElementById("timer").innerHTML = 
+                `${days} දින, ${hours} පැය, ${minutes} මිනිත්තු, ${seconds} තත්පර`;
         }
+        setInterval(updateTimer, 1000);
+        updateTimer();
     </script>
 </body>
 </html>
