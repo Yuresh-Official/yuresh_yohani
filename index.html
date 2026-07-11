@@ -3,65 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For My Yohani ❤️</title>
+    <title>Yohani's Love Scanner ❤️</title>
     <style>
-        body { margin: 0; background: #ffdee9; font-family: sans-serif; display: flex; justify-content: center; align-items: center; min-height: 100vh; overflow-x: hidden; }
-        .container { text-align: center; background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); width: 90%; max-width: 400px; }
-        .photo { width: 100%; height: 300px; background-size: cover; background-position: center; border-radius: 15px; margin-bottom: 20px; display: none; }
-        button { padding: 15px 30px; font-size: 18px; border: none; border-radius: 50px; cursor: pointer; font-weight: bold; margin: 10px; transition: 0.3s; }
-        #yesBtn { background: #27ae60; color: white; }
-        #noBtn { background: #c0392b; color: white; position: absolute; }
-        #albumSection { display: none; }
-        h1 { color: #d63031; }
+        body { background: #ffeef2; font-family: 'Arial', sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .card { background: white; padding: 30px; border-radius: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); text-align: center; width: 320px; }
+        input { padding: 10px; width: 80%; margin-bottom: 20px; border: 2px solid #ff7675; border-radius: 10px; }
+        button { padding: 12px 25px; background: #ff4757; color: white; border: none; border-radius: 20px; cursor: pointer; font-weight: bold; }
+        #scanner { width: 100%; height: 10px; background: #eee; border-radius: 5px; margin-top: 20px; display: none; overflow: hidden; }
+        #bar { width: 0%; height: 100%; background: #00b894; }
+        #result { margin-top: 20px; font-weight: bold; color: #d63031; display: none; }
     </style>
 </head>
 <body>
 
-    <div class="container" id="mainDiv">
-        <h1 id="question">මගෙ රත්තරන් Yohani, ඔයා මට ආදරෙයිද? ❤️</h1>
-        <div id="btnDiv">
-            <button id="yesBtn" onclick="startAlbum()">ඔව්! ❤️</button>
-            <button id="noBtn" onmouseover="moveBtn()">නැ</button>
-        </div>
+<div class="card">
+    <h2>ආදරේ ස්කෑනර් එක ❤️</h2>
+    <input type="text" id="name" placeholder="ඔයාගේ නම ලියන්න...">
+    <button onclick="scan()">ස්කෑන් කරන්න</button>
+    
+    <div id="scanner"><div id="bar"></div></div>
+    <div id="result"></div>
+</div>
 
-        <div id="albumSection">
-            <div id="photoContainer" class="photo"></div>
-            <h2 id="caption">අපේ ලස්සන මතකයන්...</h2>
-            <button onclick="nextPhoto()">ඊළඟ මතකය ➡️</button>
-        </div>
-    </div>
-
-    <script>
-        const photos = [
-            { url: 'https://i.ibb.co/zYNqjSL/IMG-20260612-WA0031-1.jpg', text: 'මගෙ රත්තරන් Yohani ❤️' },
-            { url: 'https://i.ibb.co/zHPDRBqX/IMG-20260612-WA0024.jpg', text: 'අපේ ලස්සන මතකයන්...' },
-            { url: 'https://i.ibb.co/ZzFrvB5F/IMG-20260704-WA0028.jpg', text: 'ඔයා මගෙ ලෝකයයි! 😘' }
-        ];
-        let index = 0;
-
-        function moveBtn() {
-            const btn = document.getElementById('noBtn');
-            btn.style.left = Math.random() * (window.innerWidth - 100) + "px";
-            btn.style.top = Math.random() * (window.innerHeight - 100) + "px";
-        }
-
-        function startAlbum() {
-            document.getElementById('question').style.display = 'none';
-            document.getElementById('btnDiv').style.display = 'none';
-            document.getElementById('albumSection').style.display = 'block';
-            showPhoto();
-        }
-
-        function showPhoto() {
-            document.getElementById('photoContainer').style.display = 'block';
-            document.getElementById('photoContainer').style.backgroundImage = `url('${photos[index].url}')`;
-            document.getElementById('caption').innerText = photos[index].text;
-        }
-
-        function nextPhoto() {
-            index = (index + 1) % photos.length;
-            showPhoto();
-        }
-    </script>
+<script>
+    function scan() {
+        const name = document.getElementById('name').value;
+        if(name === "") { alert("කරුණාකර නම ඇතුළත් කරන්න!"); return; }
+        
+        document.getElementById('scanner').style.display = 'block';
+        document.getElementById('result').style.display = 'none';
+        let bar = document.getElementById('bar');
+        bar.style.width = "0%";
+        
+        let width = 0;
+        let interval = setInterval(() => {
+            if (width >= 100) {
+                clearInterval(interval);
+                document.getElementById('result').style.display = 'block';
+                document.getElementById('result').innerHTML = `ආදරේ මට්ටම: 100%<br>මන් ඔයාට ගොඩක් ආදරෙයි මගෙ රත්තරන් Yohani! ❤️`;
+            } else {
+                width++;
+                bar.style.width = width + "%";
+            }
+        }, 30);
+    }
+</script>
 </body>
 </html>
